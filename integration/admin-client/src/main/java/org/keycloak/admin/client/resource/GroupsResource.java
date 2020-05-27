@@ -69,6 +69,32 @@ public interface GroupsResource {
                                      @QueryParam("max") Integer max);
 
     /**
+     * Get groups regardless of their hierarchy.
+     * @param onlyTopGroups <code>true</code> or <code>false</code> for filter only top level groups
+     * @return A list containing the groups requested.
+     */
+    @GET
+    @NoCache
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    List<GroupRepresentation> groups(@QueryParam("top") boolean onlyTopGroups);
+
+    /**
+     * Get groups regardless of their hierarchy.
+     * @param onlyTopGroups <code>true</code> or <code>false</code> for filter only top level groups
+     * @param first index of the first element
+     * @param max max number of occurrences
+     * @return A list containing the slice of all groups.
+     */
+    @GET
+    @NoCache
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    List<GroupRepresentation> groups(@QueryParam("top") boolean onlyTopGroups,
+                                     @QueryParam("first") Integer first,
+                                     @QueryParam("max") Integer max);
+
+    /**
      * Get groups by pagination params.
      * @param search max number of occurrences
      * @param first index of the first element
